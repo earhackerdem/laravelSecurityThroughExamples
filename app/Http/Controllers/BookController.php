@@ -8,6 +8,11 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource('book');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -45,7 +50,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        $this->authorize('update-book',$book);
+       // $this->authorize('update',$book);
         return 'the view mate haha';
     }
 
@@ -54,7 +59,7 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        $this->authorize('update-book',$book);
+        //$this->authorize('update',$book);
         return 'add your logic dont be lazy';
     }
 

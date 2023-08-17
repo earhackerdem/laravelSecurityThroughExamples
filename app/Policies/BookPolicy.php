@@ -11,6 +11,7 @@ class BookPolicy
     /**
      * Determine whether the user can view any models.
      */
+    //php artisan make:policy --model=Book BookPolicy
     public function viewAny(User $user): bool
     {
         //
@@ -35,9 +36,11 @@ class BookPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Book $book): bool
+    public function update(User $user, Book $book): bool | Response
     {
-        //
+        return $book->user()->is($user)
+        ? Response::allow()
+        : Response::denyAsNotFound();
     }
 
     /**
