@@ -45,7 +45,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $this->authorize('update-book',$book);
+        return 'the view mate haha';
     }
 
     /**
@@ -53,7 +54,8 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $this->authorize('update-book',$book);
+        return 'add your logic dont be lazy';
     }
 
     /**
